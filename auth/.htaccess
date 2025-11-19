@@ -1,0 +1,10 @@
+AuthName "phpCDs Maintenance" 
+AuthType Basic 
+AuthUserFile /home/larmo/aretemm.net/phpCDs/auth/.htpasswd 
+AuthGroupFile /dev/null 
+ErrorDocument 400 "<html><head><meta http-equiv='refresh' content='0;url=/phpCDs/401.html'></head></html>
+ErrorDocument 401 "<html><head><meta http-equiv='refresh' content='0;url=/phpCDs/401.html'></head></html>
+ErrorDocument 403 "no sale
+ErrorDocument 404 "no sale
+ErrorDocument 500 "no sale
+require valid-user

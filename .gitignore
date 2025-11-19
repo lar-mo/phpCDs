@@ -1,0 +1,11 @@
+config.php
+*.bak
+*.old
+.DS_Store
+.idea/
+.vscode/
+
+# Backup folder and files
+/bak/
+*BAK.php
+*SAFETY.php

@@ -1,0 +1,86 @@
+To get this program started:
+
+1. create database cd_collection
+_________________________________________________________________________________
+2. create table cds
+
+Table structure for table 'cds'
+
+CREATE TABLE cds (
+  id int(10) NOT NULL auto_increment,
+  artist varchar(50) NOT NULL default '',
+  album varchar(60) NOT NULL default '',
+  genre varchar(15) NOT NULL default '',
+  release_date varchar(50) default NULL,
+  number_of_discs char(2) default NULL,
+  record_label varchar(35) default NULL,
+  PRIMARY KEY  (id)
+) TYPE=MyISAM;
+
+here are some sample records:
+INSERT INTO cds VALUES (1,'Orb','Orblivion','Electronica','MAR 11, 1997','1','Polygram Records');
+INSERT INTO cds VALUES (2,'King Diamond','Fatal Portrait','Metal','1986','1','Roadrunner Records');
+INSERT INTO cds VALUES (3,'The Pharcyde','Bizarre-Ride','Hip Hop','(APR 28, 1998)','1','Wea/Delicious Vinyl');
+INSERT INTO cds VALUES (4,'Madonna','Ray of Light','Pop','MAR 3, 1998','1','Warner Brothers');
+INSERT INTO cds VALUES (5,'Love','Forever Changes','Rock','1967','1','Elektra/Asylum');
+INSERT INTO cds VALUES (9,'Pearl Jam','Ten','Rock','AUG 27, 1991','1','Sony');
+_________________________________________________________________________________
+3. create table cart
+
+Table structure for table 'cart'
+
+CREATE TABLE cart (
+  cartId int(11) NOT NULL auto_increment,
+  cookieId varchar(50) default NULL,
+  itemId int(11) default NULL,
+  qty int(11) default NULL,
+  PRIMARY KEY  (cartId),
+  UNIQUE KEY id (cartId)
+) TYPE=MyISAM;
+_________________________________________________________________________________
+4. modify httpd.conf
+
+a. add these lines to ### Section 2: 'Main' server configuration:
+    AllowOverride AuthConfig
+
+b. add these lines to # Customizable error response (Apache style): 
+    <Directory /usr/local/apache/htdocs/phpCDs/>
+    ErrorDocument 401 /phpCDs/apache401.php
+    </Directory>
+_________________________________________________________________________________
+5. create file structure
+
+note: When you untar the package, the folders will be created automatically.
+
+main: /server/document/root/phpCDs/
+sub: /server/document/root/phpCDs/auth/
+sub: /server/document/root/phpCDs/images/
+sub: /server/document/root/phpCDs/covers
+sub: /server/document/root/phpCDs/include/
+_________________________________________________________________________________
+6. go to /phpCDs/auth directory & create .htaccess
+
+AuthUserFile /server/document/root/phpCDs/auth/.htpasswd
+AuthGroupFile /dev/null
+AuthName "phpCDs :: Database Adminstration"
+AuthType Basic
+
+<Limit GET POST>
+Require valid-user
+</Limit>
+
+_________________________________________________________________________________
+7. from the command line, type this command to create a user:
+htpasswd -bc /server/document/root/phpCDs/auth/.htpasswd yourname
+_________________________________________________________________________________
+8. edit contact.php with your own email address
+
+<INPUT TYPE="HIDDEN" NAME="submit_to" VALUE="yourname@yourdomain.com"> 
+_________________________________________________________________________________
+9. edit cdform.cgi with your own email address
+
+$youremail = "yourname\@yourdomain.com";
+_________________________________________________________________________________
+10. edit db_access.inc with your database information: DBhost, DBuser, DBpass
+_________________________________________________________________________________
+11. edit doUpload.php with with your server's path to the main phpCDs directory

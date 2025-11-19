@@ -1,0 +1,97 @@
+KEY FEATURES
+
+1.  index.php
+    a. shows date in browser title bar
+    b. defines frame ratio and page sources
+2.  welcome.php
+    a. splash page
+    b. links to welcome2.php
+3.  topframeCD.php
+    a. JavaScript for onChange event with pull-down menus
+    b. Reset other forms with onClick event
+    c. dynamically populated pull-down menus
+    d. limit result if string length exceeds 20 chars (adds ellipsis)
+    e. string encode/decode for display and queries
+    f. browser detection for textbox widths for NN 4.7+
+4.  welcome2.php
+    a. JavaScript to insert value for sample query
+    b. Search form; same as in topframeCD.php
+5.  about.php
+    a. basic listing of files used and their function
+    b. includes the .htaccess and cgis as well
+6.  using.php
+    a. basic listing of tips and tricks to using phpCDs
+    b. also features and db administration
+7.  contact.php
+    a. uses cdform.cgi for form handling
+    b. includes hidden tags for email display purposes
+8.  cdlistANY.php
+    a. limit result if string length exceeds 35 chars
+    b. HR shows after ea. record unless it's the last one
+9.  cdlistColumn.php
+    a. shows all uniques values for Artist and Album
+    b. same result set as the pulldowns but easier to read
+10. cdlistSearch.php
+    a. main script for doing query
+    b. requires explicit use of wildcard character %
+11. display.inc
+    a. works with cdlistANY.php and cdlistSearch.php
+    b. table rows for showing query results
+12. zarkobar.inc
+    a. displays the title of the project
+    b. links to View Cart, Insert/Update, Welcome2.php
+13. zarkobar2.inc
+    a. shortened version of zarkobar for Add Image popup
+    b. title and close window link
+14. html_hdr.inc
+    a. CSS definition for look and feel
+    b. includes all font tags
+15. body.inc
+    a. standardizes the body tag with marginheight, etc.
+16. db_access.inc
+    a. basic variables for all db connectivity
+    b. DBhost, DBuser, DBpass, DBName, table
+17. db_auth.inc
+    a. php module for page access authorization
+    b. replaced by .htaccess and apache/httpd.conf update
+    c. features a single user and password
+18. html_end.inc
+    a. closing center, body and html tags
+    b. keeps things a little tidier
+19. apache401.php
+    a. replacement for generic apache 401 server error page
+    b. can also use the db_auth.inc in lieu of .htaccess
+20. cart.php
+    a. adds items to the shopping cart
+    b. includes the display of the cart too
+21. checkout.php
+    a. simple form for submitting results for checkout
+    b. you can view each records by clicking on id number
+22. db.php
+    a. sets the session cookie for cart functionality
+    b. appends to the table for each session
+23. doUpload.php
+    a. script behind addImage.php to upload images to server
+    b. checks for image as well as correct size and format
+24. addImage.php
+    a. small popup with form for browsing local drive for images
+    b. form to upload images
+25. editCDs.php
+    a. updates and deletes to database
+    b. works with editSearch.php
+26. editSearch.php
+    a. script used on insert.php for finding records to modify
+    b. displays results in an editable format unlike cdlistSearch.php
+27. insert.php
+    a. main script for adding, updating and deleting database records
+    b. uses editSearch.php for finding records to modify
+28. cdform.cgi
+    a. PERL form handling script used by both the shopping cart and contact forms
+    b. sends email to yourname@yourdomain.com with form data
+    c. sends an autoresponse to submitter
+29. response2.txt
+    a. small text file that is added to the autoresponse
+    b. this one is specific to the shopping cart form
+30. response3.txt
+    a. same as response2.txt
+    b. this one is specific to the contact form
