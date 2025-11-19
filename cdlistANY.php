@@ -21,13 +21,13 @@ include "include/zarkobar.inc";
 
 include "include/db_access.inc";
 
-$query = $_GET['query'];
-$artist = $_GET['artist'];
-$album = $_GET['album'];
-$genre = $_GET['genre'];
-$release_date = $_GET['release_date'];
-$number_of_discs = $_GET['number_of_discs'];
-$record_label = $_GET['record_label'];
+$query = $_GET['query'] ?? '';
+$artist = $_GET['artist'] ?? '';
+$album = $_GET['album'] ?? '';
+$genre = $_GET['genre'] ?? '';
+$release_date = $_GET['release_date'] ?? '';
+$number_of_discs = $_GET['number_of_discs'] ?? '';
+$record_label = $_GET['record_label'] ?? '';
 
 $query2 = stripslashes($query);
 $artist2 = stripslashes($artist);

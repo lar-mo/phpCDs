@@ -9,3 +9,6 @@ config.php
 /bak/
 *BAK.php
 *SAFETY.php
+auth/.htpasswd
+/images/
+covers/

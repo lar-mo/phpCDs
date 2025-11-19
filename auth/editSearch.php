@@ -68,14 +68,14 @@ $query2 = stripslashes($query);
              $query3 = $query2;
          }
 
-$resultSet = $_GET['resultSet'];
-$id = $_GET['id'];
-$artist = $_GET['artist'];
-$album = $_GET['album'];
-$genre = $_GET['genre'];
-$release_date = $_GET['release_date'];
-$number_of_discs = $_GET['number_of_discs'];
-$record_label = $_GET['record_label'];
+$resultSet = $_GET['resultSet'] ?? 5;
+$id = $_GET['id'] ?? '';
+$artist = $_GET['artist'] ?? '';
+$album = $_GET['album'] ?? '';
+$genre = $_GET['genre'] ?? '';
+$release_date = $_GET['release_date'] ?? '';
+$number_of_discs = $_GET['number_of_discs'] ?? '';
+$record_label = $_GET['record_label'] ?? '';
 
 $con = mysqli_connect($DBhost,$DBuser,$DBpass) or die("Unable to connect to database" . mysqli_errno($con));
 $database = mysqli_select_db($con, "$DBName") or die("Unable to select database $DBName" . mysqli_errno($con));
@@ -231,6 +231,7 @@ for($i=0;$i<$rowcount;$i++)
    $theartist = urlencode($theartistraw);
    $thealbum = urlencode($thealbumraw);
    $thegenre = urlencode($thegenreraw);
+   $thegenre2 = urldecode($thegenreraw);
    $therelease_date = urlencode($therelease_dateraw);
    $thenumber_of_discs = urlencode($thenumber_of_discsraw);
    $therecord_label = urlencode($therecord_labelraw);

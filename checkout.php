@@ -92,7 +92,7 @@
 										</tr>
 										<tr>
 											<th colspan=2><textarea name="body" cols="42" rows="6" wrap="true"></textarea>
-										    	<center><input type="button" value="View Cart" class="display" onClick="self.location='/phpCDs/cart.php'">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="reset" value="Reset" class="display">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="submit" value="Send Request" class="display"></center>
+										    	<center><input type="button" value="View Cart" class="display" onClick="self.location='cart.php'">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="reset" value="Reset" class="display">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="submit" value="Send Request" class="display"></center>
 										</tr>
 										<tr>
 											<td colspan=2><img src="images/1pix.gif" width=1 height=10></td>

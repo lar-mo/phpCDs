@@ -1,11 +1,11 @@
-<?
+<?php
 
 // Adapted from PHP Image Uploader V1.1 Random Number Name
 // by Zach White
 // www.zachwhite.com
 
 //user defined variables
-$abpath = "/usr/local/apache/htdocs/phpCDs/covers"; //Absolute path to where images are uploaded. No trailing slash
+$abpath = __DIR__ . "/covers"; //Absolute path to where images are uploaded. No trailing slash
 $sizelim = "yes"; //Do you want size limit, yes or no
 $size = "25000"; //What do you want size limited to be if there is one
 

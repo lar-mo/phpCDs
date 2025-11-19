@@ -2,14 +2,15 @@
 
 include "../include/db_access.inc";
 
-$update_type = $_GET['change'];
-$id = $_GET['id'];
-$artist = $_GET['artist'];
-$album = $_GET['album'];
-$genre = $_GET['genre'];
-$release_date = $_GET['release_date'];
-$number_of_discs = $_GET['number_of_discs'];
-$record_label = $_GET['record_label'];
+$update_type = $_GET['change'] ?? '';
+$id = $_GET['id'] ?? '';
+$artist = $_GET['artist'] ?? '';
+$album = $_GET['album'] ?? '';
+$genre = $_GET['genre'] ?? '';
+$release_date = $_GET['release_date'] ?? '';
+$number_of_discs = $_GET['number_of_discs'] ?? '';
+$record_label = $_GET['record_label'] ?? '';
+$query = $_GET['query'] ?? '';
 
 $query2 = stripslashes($query);
 $artist2 = stripslashes($artist);
@@ -96,7 +97,7 @@ include "../include/html_end.inc";
 		  mysql_close ();
 
 	}
-	else{
+	elseif ($update_type == "delete"){
 		$query = "delete from $table where id=$id";
   		$result = mysqli_query($con, $query);
 		if ($result){

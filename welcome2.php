@@ -64,7 +64,7 @@ function goto_URL(object) {
 											Search by Genre
 												<select name="genre" onChange="return goto_URL(this.form.genre)">
 												<option value="javascript:self.focus();"></option>
-<?
+<?php
 
 include "include/db_access.inc";
 

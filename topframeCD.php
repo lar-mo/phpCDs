@@ -3,7 +3,15 @@
 <script language="JavaScript">
 <!--
 function goto_URL(object) {
-  parent.out.location.href = object.options[object.selectedIndex].value;
+  var url = object.options[object.selectedIndex].value;
+  if (parent.out && parent.out.location) {
+    parent.out.location.href = url;
+  } else if (parent.frames['out']) {
+    parent.frames['out'].location.href = url;
+  } else {
+    window.open(url, 'out');
+  }
+  object.selectedIndex = 0; // Reset dropdown to first (empty) option
   return true;
 }
 //-->
@@ -25,7 +33,7 @@ function goto_URL(object) {
     					<select name="artist" onChange="return goto_URL(this.form.artist)" onFocus="document.sortalbum.reset();document.search.reset()" style="{color: #000000; font-family:tahoma; font-size:8pt;}">
     					<option value="javascript:self.focus();"></option>
 
-<?
+<?php
 
 // SQL access and query to get a list of all artists
 
@@ -79,7 +87,7 @@ for($i=0;$i<$rowcount;$i++)
     					<select name="album" onChange="return goto_URL(this.form.album)" onFocus="document.sortartist.reset();document.search.reset()" style="{color: #000000; font-family:tahoma; font-size:8pt;}">
     					<option value="javascript:self.focus();"></option>
 
-<?
+<?php
 
 // SQL query to get a list of all albums
 

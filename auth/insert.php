@@ -3,19 +3,20 @@
 
 //include "../include/db_auth.inc";
 
-if ($_REQUEST['submitBtn'] == "Enter Record"){
+if (isset($_REQUEST['submitBtn']) && $_REQUEST['submitBtn'] == "Enter Record"){
   // The submit button was clicked!
   // Get the input for Artist, Album and Genre then store it in the database.
 
 include "../include/db_access.inc";
 
-$id = $_GET['id'];
-$artist = $_GET['artist'];
-$album = $_GET['album'];
-$genre = $_GET['genre'];
-$release_date = $_GET['release_date'];
-$number_of_discs = $_GET['number_of_discs'];
-$record_label = $_GET['record_label'];
+$id = $_GET['id'] ?? '';
+$artist = $_GET['artist'] ?? '';
+$album = $_GET['album'] ?? '';
+$genre = $_GET['genre'] ?? '';
+$release_date = $_GET['release_date'] ?? '';
+$number_of_discs = $_GET['number_of_discs'] ?? '';
+$record_label = $_GET['record_label'] ?? '';
+$query = $_GET['query'] ?? '';
 
 $query2 = stripslashes($query);
 $artist2 = stripslashes($artist);
