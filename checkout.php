@@ -2,7 +2,7 @@
 
 	include("include/db.php");
 
-	switch($_GET["action"])
+	switch($_GET["action"] ?? 'default')
 	{
 		case "add_item":
 		{
@@ -37,10 +37,12 @@
 		global $dbServer, $dbUser, $dbPass, $dbName;
 
 		// Get a connection to the database
-		$cxn = @ConnectToDb($dbServer, $dbUser, $dbPass, $dbName);
+		$con = mysqli_connect($dbServer,$dbUser,$dbPass) or die("Unable to connect to database" . mysqli_errno($con));
+		$database = mysqli_select_db($con, "$dbName") or die("Unable to select database $dbName" . mysqli_errno($con));
 
 		$totalCost = 0;
-		$result = mysql_query("select * from cart inner join cds on cart.itemId = cds.id where cart.cookieId = '" . GetCartId() . "' order by cart.cartId asc");
+		$cartId = GetCartId();
+		$result = mysqli_query($con, "select * from cart inner join cds on cart.itemId = cds.id where cart.cookieId = '$cartId' order by cart.cartId asc");
 		?>
 		<?php include "include/html_hdr.inc"; ?>
 		<title>phpCDs :: Online Music Inventory</title></head>
@@ -48,7 +50,7 @@
 		<?php include "include/zarkobar.inc"; ?>
 
 		<p>
-<form name="frmCart" method="POST" action="/phpCDs/include/cdform.cgi">
+<form name="frmCart" method="POST" action="include/cdform.cgi">
 <table bgcolor="#666666" cellspacing="0" cellpadding="1" border=0 width=640>
 	<tr>
 		<td>
@@ -107,7 +109,7 @@
 
 			<?php
 
-			while($row = mysql_fetch_array($result))
+			while($row = mysqli_fetch_array($result))
 			{
 
 			?>

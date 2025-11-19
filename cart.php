@@ -11,7 +11,7 @@
 
 	include("include/db.php");
 
-	switch($_GET["action"])
+	switch($_GET["action"] ?? 'default')
 	{
 		case "add_item":
 		{
@@ -44,23 +44,26 @@
 		$con = mysqli_connect($dbServer,$dbUser,$dbPass) or die("Unable to connect to database" . mysqli_errno($con));
 		$database = mysqli_select_db($con, "$dbName") or die("Unable to select database $DBName" . mysqli_errno($con));
 
+		$cartId = GetCartId();
+		
 		// Check if this item already exists in the users cart table
-		$sqlquery = "select count(*) from cart where cookieId = '" . GetCartId() . "' and itemId = $itemId";
+		$sqlquery = "select count(*) from cart where cookieId = '$cartId' and itemId = $itemId";
 		$result = mysqli_query($con, $sqlquery);
-		$rowcount = mysqli_num_rows($result);
+		$row = mysqli_fetch_row($result);
+		$count = $row[0];
 
-		if($rowcount == 0)
+		if($count == 0)
 		{
 			// This item doesn't exist in the users cart,
 			// we will add it with an insert query
 
-			@mysqli_query($con, "insert into cart(cookieId, itemId, qty) values('" . GetCartId() . "', $itemId, $qty)");
+			$insertQuery = "insert into cart(cookieId, itemId, qty) values('$cartId', $itemId, $qty)";
+			$insertResult = mysqli_query($con, $insertQuery);
 		}
 		else
 		{
 			// This item already exists in the users cart,
 			// we will update it instead
-
 			return false;
 			// UpdateItem($itemId, $qty);
 		}
@@ -77,7 +80,7 @@
                 $con = mysqli_connect($dbServer,$dbUser,$dbPass) or die("Unable to connect to database" . mysqli_errno($con));
                 $database = mysqli_select_db($con, "$dbName") or die("Unable to select database $DBName" . mysqli_errno($con));
 
-		mysql_query("delete from cart where cookieId = '" . GetCartId() . "' and itemId = $itemId");
+		mysqli_query($con, "delete from cart where cookieId = '" . GetCartId() . "' and itemId = $itemId");
 	}
 
 	function ShowCart()
@@ -92,7 +95,10 @@
                 $database = mysqli_select_db($con, "$dbName") or die("Unable to select database $DBName" . mysqli_errno($con));
 
 		$totalCost = 0;
-		$result = mysqli_query($con, "select * from cart inner join cds on cart.itemId = cds.id where cart.cookieId = '" . GetCartId() . "' order by cart.cartId asc");
+		$cartId = GetCartId();
+		$query = "select * from cart inner join cds on cart.itemId = cds.id where cart.cookieId = '$cartId' order by cart.cartId asc";
+		$result = mysqli_query($con, $query);
+		$rowcount = mysqli_num_rows($result);
 		?>
 		<?php include "include/html_hdr.inc"; ?>
 
@@ -146,17 +152,15 @@
 			{
 			?>
 			<tr>
-	<td height="25"><input type=hidden name=id value="".$row[$i]['id'].""><a href="cdlistSearch.php?searchType=id&query=".$row[$i]['id']."" class="cart2">".$row[$i]['id']."</a></td>
-	<td height="25" class="zarko"><input type=hidden name=artist value="".$row[$i]['artist']."">".$row[$i]['artist']."</td>
-	<td height="25" class="zarko"><input type=hidden name=album value="".$row[$i]['album']."">".$row[$i]['album']."</td>
-	<td height="25"><a href="cart.php?action=remove_item&id=".$row[$i]['id']."" class="cart2">Remove</a></td>
+	<td height="25"><input type=hidden name=id value="<?php echo $row[$i]['id']; ?>"><a href="cdlistSearch.php?searchType=id&query=<?php echo $row[$i]['id']; ?>" class="cart2"><?php echo $row[$i]['id']; ?></a></td>
+	<td height="25" class="zarko"><input type=hidden name=artist value="<?php echo $row[$i]['artist']; ?>"><?php echo $row[$i]['artist']; ?></td>
+	<td height="25" class="zarko"><input type=hidden name=album value="<?php echo $row[$i]['album']; ?>"><?php echo $row[$i]['album']; ?></td>
+	<td height="25"><a href="cart.php?action=remove_item&id=<?php echo $row[$i]['id']; ?>" class="cart2">Remove</a></td>
 								</tr>
 
 			<?php
 			}
 			?>
-
-	<tr><td colspan="4"><center><h3>Cart doesn't work</h3><center></td></tr>
 	<tr>
 	<td width="100%" bgcolor="#DDDDDD" colspan="4">
 		<hr size="1" color="#666666" NOSHADE>
