@@ -6,11 +6,10 @@
 // -if image doesn't exist-> show the default cover image(no_art.jpg)
 // -if image does exist -> show the album cover image (eg. icon123.jpg)
 
-	$isImage = @fopen(__DIR__."/../covers/icon$theid.jpg", "r");
-	if (!$isImage) {
-		print "<img src=\"covers/no_art.jpg\" width=\"90\" height=\"90\" border=0 alt=\"$theid\"><br><a href=\"cart.php?action=add_item&id=$theid&qty=1\" class=\"cart2\">Add to Cart</a>"; 
-	} else {
+	if (file_exists(__DIR__."/../covers/icon$theid.jpg")) {
 		print "<img src=\"covers/icon$theid.jpg\" width=\"90\" height=\"90\" alt=\"$theid\"><br><a href=\"cart.php?action=add_item&id=$theid&qty=1\" class=\"cart2\">Add to Cart</a>";
+	} else {
+		print "<img src=\"covers/no_art.jpg\" width=\"90\" height=\"90\" border=0 alt=\"$theid\"><br><a href=\"cart.php?action=add_item&id=$theid&qty=1\" class=\"cart2\">Add to Cart</a>"; 
 	}
 
 	print "</td><td bgcolor=\"#DDDDDD\" align=\"left\" valign=\"middle\">
