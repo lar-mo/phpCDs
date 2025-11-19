@@ -6,11 +6,7 @@
 <?php include("include/zarkobar.inc"); ?>
 
 <p>
-<form name="phpCDsContact" method="POST" action="/phpCDs/include/cdform.cgi">		
-
-<INPUT TYPE="HIDDEN" NAME="placeholder" VALUE="#############################################">
-<INPUT TYPE="HIDDEN" NAME="placeholder" VALUE="####### Information from Contact form ########"> 
-<INPUT TYPE="HIDDEN" NAME="placeholder" VALUE="#############################################"> 				
+<form name="phpCDsContact" method="POST" action="include/send_email.php"> 				
 
 <table bgcolor="#666666" cellspacing="0" cellpadding="1" border=0 width=640>
 	<tr>
@@ -65,15 +61,7 @@
 	</tr>
 </table>
 
-<INPUT TYPE="HIDDEN" NAME="placeholder" VALUE="#############################################">
-<INPUT TYPE="HIDDEN" NAME="placeholder" VALUE="################ Some variables #############"> 
-<INPUT TYPE="HIDDEN" NAME="placeholder" VALUE="#############################################"> 
-<INPUT TYPE="HIDDEN" NAME="response" VALUE="/phpCDs/include/response3.txt">
-<INPUT TYPE="HIDDEN" NAME="required" VALUE="NAME,EMAIL"> 
-<INPUT TYPE="HIDDEN" NAME="data_order" VALUE="name,email,body,"> 
-<INPUT TYPE="HIDDEN" NAME="outputfile" VALUE="phpCDs contact"> 
-<INPUT TYPE="HIDDEN" NAME="submit_to" VALUE="postmaster@aretemm.net"> 
-<INPUT TYPE="HIDDEN" NAME="form_id" VALUE="phpCDs checkout"> 
+<INPUT TYPE="HIDDEN" NAME="form_type" VALUE="contact">
 
 </form>
 <p><br>

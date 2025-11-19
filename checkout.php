@@ -50,7 +50,7 @@
 		<?php include "include/zarkobar.inc"; ?>
 
 		<p>
-<form name="frmCart" method="POST" action="include/cdform.cgi">
+<form name="frmCart" method="POST" action="include/send_email.php">
 <table bgcolor="#666666" cellspacing="0" cellpadding="1" border=0 width=640>
 	<tr>
 		<td>
@@ -69,9 +69,6 @@
 						<table border=0>
 							<tr>
 								<td align=center colspan="3" bgcolor="#DDDDDD">
-								<input type=hidden name="useless_spacer" value="*****************************************">
-								<input type=hidden name="useless_spacer" value="************** Name and Email ***********">
-								<input type=hidden name="useless_spacer" value="*****************************************">
 									<table border=0 bgcolor="#DDDDDD">
 										<tr>
 											<td colspan=2><img src="images/1pix.gif" width=1 height=10></td>
@@ -103,9 +100,6 @@
 								</th>
 							</tr>
 						</table>
-				<INPUT TYPE="HIDDEN" NAME="useless_spacer" value="*****************************************">
-				<INPUT TYPE="HIDDEN" NAME="useless_spacer" value="************ the requested CDs **********">
-				<INPUT TYPE="HIDDEN" NAME="useless_spacer" value="*****************************************">
 
 			<?php
 
@@ -114,9 +108,9 @@
 
 			?>
 
-				<INPUT TYPE="HIDDEN" NAME="id" value="<?php echo $row["id"]; ?>">
-				<INPUT TYPE="HIDDEN" NAME="artist" value="<?php echo $row["artist"]; ?>">
-				<INPUT TYPE="HIDDEN" NAME="album" value="<?php echo $row["album"]; ?>">
+				<INPUT TYPE="HIDDEN" NAME="id[]" value="<?php echo $row["id"]; ?>">
+				<INPUT TYPE="HIDDEN" NAME="artist[]" value="<?php echo $row["artist"]; ?>">
+				<INPUT TYPE="HIDDEN" NAME="album[]" value="<?php echo $row["album"]; ?>">
 
 			<?php
 
@@ -124,15 +118,7 @@
 
 			?>
 
-				<INPUT TYPE="HIDDEN" NAME="useless_spacer" value="*****************************************">
-				<INPUT TYPE="HIDDEN" NAME="useless_spacer" value="********** useless information **********">
-				<INPUT TYPE="HIDDEN" NAME="useless_spacer" value="*****************************************">
-				<INPUT TYPE="HIDDEN" NAME="response" value="/phpCDs/include/response2.txt">
-				<INPUT TYPE="HIDDEN" NAME="required" VALUE="NAME,EMAIL">
-				<INPUT TYPE="HIDDEN" NAME="data_order" VALUE="name,email,body,">
-				<INPUT TYPE="HIDDEN" NAME="outputfile" VALUE="phpCDs checkout">
-				<INPUT TYPE="HIDDEN" NAME="submit_to" VALUE="jaridon@aretemm.net">
-				<INPUT TYPE="HIDDEN" NAME="form_id" VALUE="phpCDs checkout">
+				<INPUT TYPE="HIDDEN" NAME="form_type" value="checkout">
 					</td>
 				</tr>
 			</table>
