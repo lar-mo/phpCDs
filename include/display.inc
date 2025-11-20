@@ -57,7 +57,11 @@
 // if query isn't by record label, show the internal link
 
 	if ($query == "4") {
-		print "$therecord_labelraw<br><a href=\"https://duckduckgo.com/?q=$therecord_label+records\" target=\"_blank\" class=text><font size=1>Search for this Record Label</font></a>";
+	    if (preg_match('(Records)', $therecord_label) === 1) {
+		    print "$therecord_labelraw<br><a href=\"https://duckduckgo.com/?q=$therecord_label\" target=\"_blank\" class=text><font size=1>Search for this Record Label</font></a>";
+		} else {
+		    print "$therecord_labelraw<br><a href=\"https://duckduckgo.com/?q=$therecord_label+records\" target=\"_blank\" class=text><font size=1>Search for this Record Label</font></a>";
+        }
 	} else {
 		print "$therecord_labelraw<br><a href=\"cdlistANY.php?query=4&record_label=$therecord_label\" class=text><font size=1>View All by this Record Label</font></a>";
 	}
