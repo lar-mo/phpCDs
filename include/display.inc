@@ -19,11 +19,11 @@
 		<td valign=top class=display width=\"175\">
 	";
 
-// if query is by artist, show the Google link
+// if query is by artist, show the DuckDuckGo link
 // if query isn't by artist, show the internal link
 
 	if ($query == "1") {
-		print "$theartistraw<br><a href=\"https://duckduckgo.com/?q=$theartist\" target=\"_self\" class=text><font size=1>Search for this Artist</font></a>";
+		print "$theartistraw<br><a href=\"https://duckduckgo.com/?q=$theartist\" target=\"_blank\" class=text><font size=1>Search for this Artist</font></a>";
 	} else {
 		print "$theartistraw<br><a href=\"cdlistANY.php?query=1&artist=$theartist\" class=text><font size=1>View All by this Artist</font></a>";
 	}
@@ -36,7 +36,7 @@
 // if query isn't by genre, show the internal link
 
 	if ($query == "3") {
-		print "$thegenreraw<br><a href=\"https://duckduckgo.com/?q=$thegenre\" class=text><font size=1>Search for this Genre</font></a>";
+		print "$thegenreraw<br><a href=\"https://duckduckgo.com/?q=$thegenre\" target=\"_blank\" class=text><font size=1>Search for this Genre</font></a>";
 	} else {
 		print "$thegenreraw<br><a href=\"cdlistANY.php?query=3&genre=$thegenre\" class=text><font size=1>View All in this Genre</font></a>";
 	}
@@ -44,7 +44,7 @@
 	print "</td></tr>
 	    <tr>
 		<th valign=top class=display>Album:</th>
-		<td valign=top class=display width=\"175\">$thealbumraw<br><a href=\"https://duckduckgo.com/?q=$theartist+$thealbum\" class=text><font size=1>Search for this Album</font></a></td>
+		<td valign=top class=display width=\"175\">$thealbumraw<br><a href=\"https://duckduckgo.com/?q=$theartist+$thealbum\" target=\"_blank\" class=text><font size=1>Search for this Album</font></a></td>
 		<th valign=top class=display>Released:</th>
 	      	<td valign=top class=display width=\"150\">$therelease_dateraw</td>
 	    </tr>
@@ -57,7 +57,7 @@
 // if query isn't by record label, show the internal link
 
 	if ($query == "4") {
-		print "$therecord_labelraw<br><a href=\"https://duckduckgo.com/?q=$therecord_label+records\" class=text><font size=1>Search for this Record Label</font></a>";
+		print "$therecord_labelraw<br><a href=\"https://duckduckgo.com/?q=$therecord_label+records\" target=\"_blank\" class=text><font size=1>Search for this Record Label</font></a>";
 	} else {
 		print "$therecord_labelraw<br><a href=\"cdlistANY.php?query=4&record_label=$therecord_label\" class=text><font size=1>View All by this Record Label</font></a>";
 	}
