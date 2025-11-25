@@ -45,7 +45,7 @@
 		$database = mysqli_select_db($con, "$dbName") or die("Unable to select database $DBName" . mysqli_errno($con));
 
 		$cartId = GetCartId();
-		
+
 		// Check if this item already exists in the users cart table
 		$sqlquery = "select count(*) from cart where cookieId = '$cartId' and itemId = $itemId";
 		$result = mysqli_query($con, $sqlquery);
@@ -148,6 +148,9 @@
 			<?php
 
 			$row = mysqli_fetch_all($result,MYSQLI_ASSOC);
+			if (count($row) == 0) {
+                echo "<tr><td height=\"25\" class=\"zarko\" colspan=4 align=\"center\">The cart is empty.</td></tr>";
+			}
 			for($i=0;$i<$rowcount;$i++)
 			{
 			?>
