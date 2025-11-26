@@ -12,3 +12,6 @@ config.php
 auth/.htpasswd
 /images/
 covers/
+scripts/
+scripts/*
+upload.sh
