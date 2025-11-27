@@ -1,6 +1,7 @@
 <html>
 <HEAD>
 	<TITLE> phpCDs :: Online Music Inventory - <? print(Date("l F d, Y")); ?> </TITLE>
+	<link rel="shortcut icon" href="images/favicon.png" />
 </HEAD>
 
 <FRAMESET rows="*,95" frameborder="0" framespacing="0" border="0">
